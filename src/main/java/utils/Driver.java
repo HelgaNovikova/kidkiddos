@@ -2,6 +2,7 @@ package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -16,7 +17,11 @@ public class Driver {
         switch (browser) {
             case "FIREFOX" -> webDriver = new FirefoxDriver();
             case "IE" -> webDriver = new InternetExplorerDriver();
-            default -> webDriver = new ChromeDriver();
+            default -> {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
+                 webDriver = new ChromeDriver(options);
+                }
         }
 
         webDriver.manage().window().maximize();
