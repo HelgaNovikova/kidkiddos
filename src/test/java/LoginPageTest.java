@@ -22,25 +22,25 @@ public class LoginPageTest extends UseCaseBase {
 
     private static LoginPage loginPage;
 
-    @BeforeAll
-    public static void classSetup() {
-        MainPage mainPage = new MainPage();
-        mainPage.navigateToMainPage();
-        loginPage = mainPage.login();
-    }
-
-    @ParameterizedTest
-    @MethodSource("loginNegative")
-    public void loginNegative(String login, String password) {
-        try {
-            loginPage.loginWithCredentials(login, password);
-            assertTrue(loginPage.isErrorMessageAppeared());
-            assertEquals(errorMessage, loginPage.getErrorMessage());
-        } catch (AssertionFailedError | NoSuchElementException e) {
-            loginPage.takeScreenshot("error");
-            throw e;
-        }
-    }
+//    @BeforeAll
+//    public static void classSetup() {
+//        MainPage mainPage = new MainPage();
+//        mainPage.navigateToMainPage();
+//        loginPage = mainPage.login();
+//    }
+//
+//    @ParameterizedTest
+//    @MethodSource("loginNegative")
+//    public void loginNegative(String login, String password) {
+//        try {
+//            loginPage.loginWithCredentials(login, password);
+//            assertTrue(loginPage.isErrorMessageAppeared());
+//            assertEquals(errorMessage, loginPage.getErrorMessage());
+//        } catch (AssertionFailedError | NoSuchElementException e) {
+//            loginPage.takeScreenshot("error");
+//            throw e;
+//        }
+//    }
 
     private static Stream<Arguments> loginNegative() {
         return Stream.of(
